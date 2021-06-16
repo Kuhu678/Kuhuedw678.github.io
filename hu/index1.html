@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+    <style>
+</style>
+</head>
+<body>
+    <div>
+        <h1>
+            Basic Form
+
+        </h1>
+        <br>
+    <form id="empForm" method="post">
+        
+           <div class= "form group">
+               <span><label for="enter name">Enter your Name: </label> <label id="Namwmsg"></label></span>
+               <input type="text" class="form-control" name= "enter your name" id="name"
+               placeholder="Enter your Name"required >
+           </br>
+
+        </div>
+        <br>
+
+        <div class= "form group">
+            <span><label for="Enter your fathers Name">Enter your Name: </label> <label id="Fathersnamemsg"></label></span>
+            <input type="text" class="form-control" name= "enter your fathers name" id="name"
+            placeholder="Enter your Fathers Name"required >
+            </div> </br>
+
+            <br>
+
+            <div class= "form group">
+                <span><label for="enter email">Enter your Email: </label> <label id="Emailwmsg"></label></span>
+                <input type="text" class="form-control" name= "enter your Enail" id="name"
+                placeholder="Enter your Email"required >
+                </div>
+
+            </br>
+
+            <!-- <br>
+
+            <select name="age" id="month">
+                <option value="no birth">select your age</option>
+                <option value="17">17</option>
+                <option value="18">18</option>
+                <option value="19">19</option>
+                <option value="20">20</option>
+                </select>
+            </br> -->
+            <div>
+                <br>
+
+                <input type="Button" class="btn btn-primary" id="empSave" value="Save" onclick="saveEmplyoee()">
+                </div>
+
+            </br>
+        
+              </form>
+
+            <script>
+                 
+                 function ValidateAndGetFormData() {
+                     var enternameaVar = $("#entername").val();
+                     if(enternameaVar===" ") {
+                         alert (" alert name is required");
+                         $("#entername").focus();
+                        return " ";                     }
+                 }
+
+                 function ValidateAndGetFormData() {
+                     var enterfathernameVar = $("#enterfathername").val();
+                     if(enterfathernameaVar===" ") {
+                         alert (" alert father name is required");
+                         $("#enterfathername").focus();
+                        return " ";                     }
+                 }
+
+
+                 function ValidateAndGetFormData() {
+                     var enteremailVar = $("#enteremail").val();
+                     if(entermailVar===" ") {
+                         alert (" alert email is required");
+                         $("#enteremail").focus();
+                        return " ";                     }
+                 }
+
+                 function ValidateAndGetFormData() {
+                     var enteremailVar = $("#enteremail").val();
+                     if(enternemailVar===" ") {
+                         alert (" alert email is required");
+                         $("#enteremail").focus();
+                        return " ";                     }
+                 }
+
+
+                 var jsonStrObj ={
+                     entername : nameVar,
+                     enterfathername: fathernameVar,
+                     enteremail: emailVar,
+                 };
+
+                 return JSON,stringify(jsonStrObj);
+
+                 
+
+                function saveForm() {
+
+                    var jsonStr= ValidateAndGetFormData();
+                    if ( jsonStr === "")
+                    return;
+                    
+                }
+                var putReqStr = createPUTRequest("90936019|-31948847138285846|90933853",
+                jsonStr , "SAMPLE", "EMP-REL");
+
+                alert(putReqStr);
+                jQuery.ajaxSetup({async: false});
+                var resultObj = executeCommand(putReqStr, "http://api.login2explore.com:5577", "/api/iml");
+                
+                jQuery.ajaxSetup({async:true});
+
+                alert(JSON.stringify(resultObj))
+
+                resetForm();
+
+            </script>
+
+
+           
+        
+    </div>
+    
+    
+
+</body>
+</html>
